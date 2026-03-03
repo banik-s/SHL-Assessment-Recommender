@@ -1,0 +1,75 @@
+️ Step-by-Step Approach to Solve This
+Here's the complete roadmap:
+
+Step 1 — Scrape & Build the Data Catalog
+Use requests + BeautifulSoup or Playwright to crawl SHL's product catalog
+Extract: Assessment name, URL, description, category, duration, test type
+Filter to only Individual Test Solutions (ignore Pre-packaged Job Solutions)
+Store in a structured format (CSV/JSON) — minimum 377 items
+Step 2 — Build Embeddings (Vector Index)
+Generate semantic embeddings for each assessment using an LLM embedding model (e.g., text-embedding-3-small from OpenAI, or sentence-transformers)
+Store in a vector database (e.g., ChromaDB, FAISS, Pinecone, or Qdrant)
+Step 3 — Build the Retrieval Engine (RAG)
+When a query arrives:
+If it's a URL → scrape the JD from that URL
+Embed the query/JD text
+Do semantic similarity search against the vector store
+Retrieve top 5–10 most relevant assessments
+Step 4 — Build the API
+Create a REST API (FastAPI recommended) with:
+POST /recommend → accepts { "query": "..." } → returns JSON list of assessments
+Deploy it (Render, Railway, HuggingFace Spaces, etc.)
+Step 5 — Build the Web Frontend
+Simple, clean UI with:
+Text input for query or paste JD
+URL input option
+Table showing recommended assessments with name + URL
+Deploy (Vercel, Netlify, Streamlit, etc.)
+Step 6 — Validate Against Labeled Train Set
+Run your system on the 10 labeled training queries
+Compare recommendations to human labels
+Tune prompts, retrieval parameters, or re-ranking logic
+Step 7 — Generate Predictions on Test Set
+Run your finalized system on the 9 unlabeled test queries
+Save in CSV format as required by Appendix 3
+Step 8 — Write the 2-Page Report
+Document: your architecture, initial MAP score, what you changed, final results
+️ Key Things They Will Penalize
+Red Flag	Why
+No web scraping of SHL catalog	Instant rejection
+Vibe-coding without understanding	No deep understanding shown
+No testing on diverse queries	Shows low rigor
+API not live/functional	Breaks submission evaluation
+ Recommended Tech Stack
+Layer	Technology
+Scraping	requests, BeautifulSoup, Playwright
+Embeddings	OpenAI text-embedding-3-small or sentence-transformers
+Vector DB	ChromaDB or FAISS
+API	FastAPI
+Frontend	Streamlit or React
+Deployment	Render / Railway / HuggingFace Spaces
+LLM (optional re-rank)	GPT-4o-mini or Gemini
+Would you like me to start building this project for you? I can begin with the scraper, then the embedding pipeline, API, and frontend — all deployable.
+
+first build the project folder structure then we will build step by step. remember this is for an entry level role. their main goal is to test my technical capabilities not a production ready product. so we need not to build extra ordinary production ready app. we need to demonstrate a clear and compact approaches and a working url
+
+Thought for 3s
+
+Setting Up Project Structure
+Created scraper skeleton, FAISS index builder, README, and requirements.txt. Now writing the API, frontend, and evaluation files.
+
+Files Edited
+build_index.py
+scrape_shl.py
+requirements.txt
+README.md
+Task
+Progress Updates
+1
+Creating task checklist and project folder structure
+
+2
+Creating all project directories and placeholder files
+
+3
+Creating API main, recommender core, frontend app, and evaluation files
